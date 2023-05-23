@@ -49,7 +49,7 @@ function deleteAllCards() {
   
 function printCards(){
     console.log(items);
-    document.getElementById("numberOfCards").innerHTML += items.length;
+    document.getElementById("cardsCount").innerHTML = items.length;
     var cardContainer = document.getElementById("cardContainer");
     cardContainer.innerHTML = "";
     for (let i = 0; i < items.length; i++) {
