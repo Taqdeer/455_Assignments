@@ -1,6 +1,10 @@
+import Nav from "../Nav/Nav";
+import "../styles.css"
+
 export default function About() {
     return(
         <div>
+            <Nav />
             <main>
                 <h1>Myself</h1>
 

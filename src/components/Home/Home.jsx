@@ -1,15 +1,11 @@
+import React from 'react';
+import Nav from "../Nav/Nav";
+
 export default function Home() {
 
     return (
         <div>
-          <header>
-            <nav>
-              <ul>
-                <li> Home </li>
-                <li> About </li>
-              </ul>
-            </nav>
-          </header>
+          <Nav />
           <main>
             <h1>Hola!</h1>
             <form id="itemForm">
