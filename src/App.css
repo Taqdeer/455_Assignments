@@ -1,0 +1,203 @@
+body {
+  font-family: 'Courier New', monospace;
+  color: #333333;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  color: #f3a9ca;
+}
+
+nav {
+  padding: 10px;
+  text-align: right;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333333;
+  padding: 5px;
+}
+
+form {
+  margin-top: 20px;
+}
+
+main{
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+input[type="url"] {
+  width: 50%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #f3a9ca;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.miniHeading{
+  color: #f3a9ca;
+  font-weight: bolder;
+}
+button:hover {
+  background-color: #f4c2d8;
+}
+
+div {
+  margin-top: 5%;
+}
+
+.card-title {
+font-size: 18px;
+font-weight: bold;
+color: #333;
+text-align: center;
+}
+.card-description {
+font-size: 14px;
+color: #666;
+margin-bottom: 10px;
+text-align: center;
+}
+.card-price {
+font-size: 16px;
+color: #ff9900;
+margin-bottom: 10px;
+text-align: center;
+}
+.card-image {
+width: 350px;
+height: 350px;
+height: auto;
+margin-bottom: 10px;
+text-align: center;
+}
+
+.card-image:hover {
+opacity: 50%;
+}
+
+#cardContainer {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+gap: 20px;
+}
+
+#numberOfCards{
+font-weight: bold;
+font-size: large;
+}
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  nav {
+    padding: 5px;
+    text-align: center;
+  }
+
+  nav li {
+    display: block;
+    padding-bottom: 20px;
+  }
+
+  .card-title {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .card-description {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .card-price {
+    font-size: 12px;
+    margin-bottom: 7px;
+  }
+  .card-image {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 7px;
+  }
+
+  #cardContainer{
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 5px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  nav{
+    text-align: center;
+  }
+
+  nav li {
+    display: block;
+    margin-bottom: 5px;
+  }
+  .card-title {
+    font-size: 10px;
+    font-weight: bold;
+  }
+  .card-description {
+    font-size: 8px;
+    margin-bottom: 5px;
+  }
+  .card-price {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+  .card-image {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 5px;
+  }
+
+  #cardContainer{
+    display: block;
+  }
+}
