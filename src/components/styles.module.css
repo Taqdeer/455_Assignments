@@ -14,17 +14,6 @@ body {
     text-align: right;
   }
   
-  nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav li {
-    display: inline-block;
-    margin-right: 10px;
-  }
-  
   nav a {
     text-decoration: none;
     color: #333333;
@@ -134,11 +123,6 @@ body {
       text-align: center;
     }
 
-    nav li {
-      display: block;
-      padding-bottom: 20px;
-    }
-
     .card-title {
       font-size: 14px;
       font-weight: bold;
@@ -169,10 +153,6 @@ body {
   
     h1 {
       font-size: 20px;
-    }
-
-    nav{
-      text-align: center;
     }
   
     nav li {

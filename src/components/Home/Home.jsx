@@ -1,6 +1,8 @@
 import React from 'react';
 import Nav from "../Nav/Nav";
 
+import "../styles.module.css"
+
 export default function Home() {
 
     return (
