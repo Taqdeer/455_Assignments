@@ -21,6 +21,6 @@ export const addItem = item => {
 
 export const fetchItems = () => {
 	return {
-		type: 'FETCH_ITEM',
+		type: 'FETCH_ITEMS',
 	};
 };

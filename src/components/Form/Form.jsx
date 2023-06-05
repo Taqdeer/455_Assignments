@@ -18,13 +18,18 @@ const Form = () => {
     });
     };
     
-    
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert('You have submitted');
         dispatch(addItem(formData));
+        e.target.reset();
+        setFormData({
+            itemName: '',
+            itemDescription: '',
+            itemPrice: 0,
+            itemURL: '',
+        });
     }
 
     return (
@@ -49,7 +54,7 @@ const Form = () => {
                     />
                     <label htmlFor='itemPrice'>Price: </label>
                     <input
-                        type='text'
+                        type='number'
                         id='itemPrice'
                         name='itemPrice'
                         value={formData.itemPrice}

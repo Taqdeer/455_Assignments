@@ -6,15 +6,9 @@ import { fetchItems } from '../../actions/index.js'
 
 import "../styles.module.css"
 
-export default function Home() {
-  const dispatch = useDispatch();
-  const items = useSelector((items) => items.items);
-
-  useEffect(() => {
-    dispatch(fetchItems());
-  }, [dispatch]);
-
-  console.log(items)
+const Home = () => {
+  const items = useSelector(state => state.imageItems);
+  console.log(items);
 
     return (
         <div>
@@ -23,14 +17,14 @@ export default function Home() {
             <h1>Hola!</h1>
             <Form />
             <div>
-              <div id="numberOfCards">Number of cards at display: <span id="cardsCount"></span></div>
+              <div id="numberOfCards">Number of cards at display: <span id="cardsCount">{items.length}</span></div>
               <div id="cardContainer">
               {items.map((item) => (
-                <div>
-                  <h3>{item.name}</h3>
-                  <p>{item.description}</p>
-                  <p>{item.price}</p>
-                  <img src={item.url} alt={item.description}/>
+                <div key={item.itemPrice}>
+                  <h3>{item.itemName}</h3>
+                  <p>{item.itemDescription}</p>
+                  <p>{item.itemPrice}</p>
+                  <img src={item.itemURL} alt={item.itemDescription} height={250} width={250}/>
                 </div>
               ))}
               </div>
@@ -40,3 +34,4 @@ export default function Home() {
       );
   }
   
+export default Home;

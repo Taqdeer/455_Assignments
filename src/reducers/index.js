@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import buttonCount from './buttonCount';
-import addItem from './addItem';
+import imageItems from './imageItems';
 
 const rootReducer = combineReducers({
     buttonCount,
-    addItem
+    imageItems
 });
 
 export default rootReducer;
