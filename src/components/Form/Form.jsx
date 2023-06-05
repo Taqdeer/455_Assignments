@@ -23,7 +23,9 @@ const Form = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(addItem(formData));
-        e.target.reset();
+    }
+
+    const clearForm = () => {
         setFormData({
             itemName: '',
             itemDescription: '',
@@ -71,6 +73,8 @@ const Form = () => {
                 </div>
                 <button type='submit'>Add Item</button>
             </form>
+            <br />
+            <button type='clear' onClick={clearForm}>Clear Items</button>
         </div>
   );
 };
