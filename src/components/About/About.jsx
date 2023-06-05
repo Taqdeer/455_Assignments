@@ -1,5 +1,7 @@
 import Nav from "../Nav/Nav";
 
+import styles from "../styles.module.css"
+
 
 export default function About() {
     return(
@@ -19,7 +21,7 @@ export default function About() {
 
                 <div>
 
-                    <span> Interesting fact: </span>
+                    <span className={styles.miniHeading}> Interesting fact: </span>
                     <br />
                     One thing which I have noticed in my CS groups is that people are very cocky and TRY to sound very intelligent, they feel themselves on the 7th cloud because they are in CS major at UBC. 
                     <br />
@@ -27,7 +29,7 @@ export default function About() {
                 </div>
 
                 <div>
-                    <span> About the Project: </span>
+                    <span className={styles.miniHeading}> About the Project: </span>
                     <br />
                     I have found a team for the project. We are planning to make a sports website, more like Tinder for sports where a person will be matched with the sports club around him/her.
                     <br />

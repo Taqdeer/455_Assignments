@@ -19,6 +19,9 @@ const imageItems = (items = defaultItems, action) => {
             return [...items, action.payload];
 		case 'FETCH_ITEMS':
 			return [...items];
+		case 'DELETE_ITEM':
+			const updatedItems = items.filter((item) => item !== action.payload);
+      		return updatedItems;
 		default:
 			return items;
 	}
