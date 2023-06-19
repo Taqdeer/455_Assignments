@@ -3,21 +3,21 @@ import { actionTypes } from './actionTypes';
 import ItemService from './service';
 
 export const getItemsAsync = createAsyncThunk(
-  actionTypes.GET_USERS,
+  actionTypes.GET_ITEMS,
   async () => {
     return await ItemService.getItems();
   }
 );
 
 export const addItemAsync = createAsyncThunk(
-  actionTypes.ADD_USER,
+  actionTypes.ADD_ITEM,
   async (item) => {
     return await ItemService.addItem({ item });
   }
 );
 
 export const removeItemAsync = createAsyncThunk(
-  actionTypes.REMOVE_USER,
+  actionTypes.REMOVE_ITEM,
   async (item) => {
     return await ItemService.removeItem({ item });
   }

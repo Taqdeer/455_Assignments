@@ -1,6 +1,6 @@
 export const actionTypes = {
-  GET_USERS: 'users/getItems',
-  ADD_USER: 'users/addItem',
-  REMOVE_USER: 'users/removeItem',
-  FILTER_ITEMS: 'users/filterItems',
+  GET_ITEMS: 'items/getItems',
+  ADD_ITEM: 'items/addItem',
+  REMOVE_ITEM: 'items/removeItem',
+  FILTER_ITEMS: 'items/filterItems',
 };

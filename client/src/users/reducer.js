@@ -11,8 +11,8 @@ const INITIAL_STATE = {
   error: null
 };
 
-const usersSlice = createSlice({
-  name: 'users',
+const itemsSlice = createSlice({
+  name: 'items',
   initialState: INITIAL_STATE,
   reducers: {},
   extraReducers: (builder) => {
@@ -68,4 +68,4 @@ const usersSlice = createSlice({
   }
 });
 
-export default usersSlice.reducer;
+export default itemsSlice.reducer;
