@@ -1,5 +1,5 @@
 const addItem = async (item) => {
-  const response = await fetch('http://localhost:3003/users', {
+  const response = await fetch('http://localhost:3003/items', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -16,7 +16,7 @@ const addItem = async (item) => {
 };
 
 const removeItem = async (item) => {
-  const response = await fetch('http://localhost:3003/users', {
+  const response = await fetch('http://localhost:3003/items', {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -33,7 +33,7 @@ const removeItem = async (item) => {
 }
 
 const getItems = async () => {
-  const response = await fetch('http://localhost:3003/users', {
+  const response = await fetch('http://localhost:3003/items', {
     method: 'GET'
   });
   return response.json();
@@ -42,7 +42,7 @@ const getItems = async () => {
 const filterItems = async (item) => {
   const endpoint = '/items';
   const queryParams = new URLSearchParams({ filter: item.item });
-  const url = `http://localhost:3003/users${endpoint}?${queryParams}`;
+  const url = `http://localhost:3003/items${endpoint}?${queryParams}`;
   const response = await fetch(url, {
     method: 'GET',
   });
