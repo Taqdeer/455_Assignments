@@ -7,7 +7,7 @@ import {useDispatch} from 'react-redux';
 import DetailedView from './DetailedView';
 
 import styled from 'styled-components';
-import { getItemsAsync, removeItemAsync } from '../../users/thunks';
+import { getItemsAsync, removeItemAsync, filterItemsAsync } from '../../users/thunks';
 
 const Overlay = styled.div`
   position: fixed;
@@ -30,8 +30,6 @@ const Popup = styled.div`
 `;
 
 const Home = () => {
-  // const items = useSelector(state => state.imageItems);
-  // console.log(items);
 
   const [popupStates, setPopupStates] = useState([]);
 
@@ -49,8 +47,6 @@ const Home = () => {
 
   const items = useSelector(state => state.users.list);
   const dispatch = useDispatch();
-  // console.log("causing problem")
-  // console.log(items)
 
   const handleDelete = (item) => {
     dispatch(removeItemAsync(item.id));
@@ -60,12 +56,27 @@ const Home = () => {
     dispatch(getItemsAsync());
   }, []);
 
+  const [filterItem, setFilterItem] = useState('');
+
+  const handleFilterChange = (event) => {
+    setFilterItem(event.target.value);
+  };
+
+  const handleFilterButtonClick = () => {
+    dispatch(filterItemsAsync(filterItem));
+  };
+
     return (
         <div>
           <Nav />
           <main className='overlay'>
             <h1>Hola!</h1>
             <Form />
+            <div>
+                <input type="text" value={filterItem} onChange={handleFilterChange} />
+                <br />
+                <button onClick={handleFilterButtonClick}>Filter</button>
+              </div>
             <div>
               <div id="numberOfCards">Number of cards at display: <span id="cardsCount">{items.length}</span></div>
               <div id="cardContainer">

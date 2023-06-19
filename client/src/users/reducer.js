@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATE } from '../utils';
-import { addItemAsync, getItemsAsync, removeItemAsync } from './thunks';
+import { addItemAsync, getItemsAsync, removeItemAsync, filterItemsAsync } from './thunks';
 
 const INITIAL_STATE = {
   list: [],
   getItems: REQUEST_STATE.IDLE,
   addItem: REQUEST_STATE.IDLE,
   removeItem: REQUEST_STATE.IDLE,
+  filterItems: REQUEST_STATE.IDLE,
   error: null
 };
 
@@ -22,8 +23,6 @@ const usersSlice = createSlice({
       })
       .addCase(getItemsAsync.fulfilled, (state, action) => {
         state.getItems = REQUEST_STATE.FULFILLED;
-        console.log("in reducer")
-        console.log(action.payload)
         state.list = action.payload;
       })
       .addCase(getItemsAsync.rejected, (state, action) => {
@@ -43,18 +42,27 @@ const usersSlice = createSlice({
         state.error = action.error;
       })
       .addCase(removeItemAsync.pending, (state) => {
-        console.log("in reducer delete pending")
         state.removeItem = REQUEST_STATE.PENDING;
         state.error = null;
       })
       .addCase(removeItemAsync.fulfilled, (state, action) => {
         state.removeItem = REQUEST_STATE.FULFILLED;
-        console.log("in reducer delete fulfilled")
-        console.log(action.payload)
         state.list = action.payload
       })
       .addCase(removeItemAsync.rejected, (state, action) => {
         state.removeItem = REQUEST_STATE.REJECTED;
+        state.error = action.error;
+      })
+      .addCase(filterItemsAsync.pending, (state) => {
+        state.filterItems = REQUEST_STATE.PENDING;
+        state.error = null;
+      })
+      .addCase(filterItemsAsync.fulfilled, (state, action) => {
+        state.filterItems = REQUEST_STATE.FULFILLED;
+        state.list = action.payload
+      })
+      .addCase(filterItemsAsync.rejected, (state, action) => {
+        state.filterItems = REQUEST_STATE.REJECTED;
         state.error = action.error;
       });
   }

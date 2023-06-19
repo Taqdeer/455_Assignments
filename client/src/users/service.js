@@ -12,8 +12,6 @@ const addItem = async (item) => {
     const errorMsg = data?.message;
     throw new Error(errorMsg)
   }
-  console.log("*******************")
-  console.log(data)
   return data;
 };
 
@@ -41,8 +39,24 @@ const getItems = async () => {
   return response.json();
 };
 
+const filterItems = async (item) => {
+  const endpoint = '/items';
+  const queryParams = new URLSearchParams({ filter: item.item });
+  const url = `http://localhost:3003/users${endpoint}?${queryParams}`;
+  const response = await fetch(url, {
+    method: 'GET',
+  });
+  const data = await response.json();
+  if (!response.ok) {
+    const errorMsg = data?.message;
+    throw new Error(errorMsg)
+  }
+  return data;
+}
+
 export default {
   addItem,
   getItems,
-  removeItem
+  removeItem,
+  filterItems
 };

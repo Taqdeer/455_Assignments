@@ -29,6 +29,14 @@ router.get('/', function (req, res, next) {
   return res.send(defaultItems);
 });
 
+router.get('/items', function (req, res, next) {
+	const filterName = req.query.filter;
+	if (filterName === '')
+		return res.send(defaultItems)
+	let filterArray = defaultItems.filter(item => item.itemName === filterName);
+	return res.send(filterArray);
+  });
+
 router.post('/', function (req, res, next) {
 	if (!req.body.item.itemName) {
 		return res.status(400).send({ message: 'Item name must be there!' })
