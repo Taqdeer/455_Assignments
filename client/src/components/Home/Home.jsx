@@ -3,7 +3,6 @@ import Nav from "../Nav/Nav";
 import Form from "../Form/Form";
 import { useSelector } from 'react-redux';
 import {useDispatch} from 'react-redux';
-import { deleteItem } from '../../actions/index.js'
 
 import DetailedView from './DetailedView';
 
