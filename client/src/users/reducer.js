@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATE } from '../utils';
-import { addUserAsync, getUsersAsync, removeUserAsync } from './thunks';
+import { addItemAsync, getItemsAsync, removeItemAsync } from './thunks';
 
 const INITIAL_STATE = {
   list: [],
-  getUsers: REQUEST_STATE.IDLE,
-  addUser: REQUEST_STATE.IDLE,
-  removeUser: REQUEST_STATE.IDLE,
+  getItems: REQUEST_STATE.IDLE,
+  addItem: REQUEST_STATE.IDLE,
+  removeItem: REQUEST_STATE.IDLE,
   error: null
 };
 
@@ -16,45 +16,45 @@ const usersSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getUsersAsync.pending, (state) => {
-        state.getUsers = REQUEST_STATE.PENDING;
+      .addCase(getItemsAsync.pending, (state) => {
+        state.getItems = REQUEST_STATE.PENDING;
         state.error = null;
       })
-      .addCase(getUsersAsync.fulfilled, (state, action) => {
-        state.getUsers = REQUEST_STATE.FULFILLED;
+      .addCase(getItemsAsync.fulfilled, (state, action) => {
+        state.getItems = REQUEST_STATE.FULFILLED;
         console.log("in reducer")
         console.log(action.payload)
         state.list = action.payload;
       })
-      .addCase(getUsersAsync.rejected, (state, action) => {
-        state.getUsers = REQUEST_STATE.REJECTED;
+      .addCase(getItemsAsync.rejected, (state, action) => {
+        state.getItems = REQUEST_STATE.REJECTED;
         state.error = action.error;
       })
-      .addCase(addUserAsync.pending, (state) => {
-        state.addUser = REQUEST_STATE.PENDING;
+      .addCase(addItemAsync.pending, (state) => {
+        state.addItem = REQUEST_STATE.PENDING;
         state.error = null;
       })
-      .addCase(addUserAsync.fulfilled, (state, action) => {
-        state.addUser = REQUEST_STATE.FULFILLED;
+      .addCase(addItemAsync.fulfilled, (state, action) => {
+        state.addItem = REQUEST_STATE.FULFILLED;
         state.list.push(action.payload);
       })
-      .addCase(addUserAsync.rejected, (state, action) => {
-        state.addUser = REQUEST_STATE.REJECTED;
+      .addCase(addItemAsync.rejected, (state, action) => {
+        state.addItem = REQUEST_STATE.REJECTED;
         state.error = action.error;
       })
-      .addCase(removeUserAsync.pending, (state) => {
+      .addCase(removeItemAsync.pending, (state) => {
         console.log("in reducer delete pending")
-        state.removeUser = REQUEST_STATE.PENDING;
+        state.removeItem = REQUEST_STATE.PENDING;
         state.error = null;
       })
-      .addCase(removeUserAsync.fulfilled, (state, action) => {
-        state.removeUser = REQUEST_STATE.FULFILLED;
+      .addCase(removeItemAsync.fulfilled, (state, action) => {
+        state.removeItem = REQUEST_STATE.FULFILLED;
         console.log("in reducer delete fulfilled")
         console.log(action.payload)
         state.list = action.payload
       })
-      .addCase(removeUserAsync.rejected, (state, action) => {
-        state.removeUser = REQUEST_STATE.REJECTED;
+      .addCase(removeItemAsync.rejected, (state, action) => {
+        state.removeItem = REQUEST_STATE.REJECTED;
         state.error = action.error;
       });
   }

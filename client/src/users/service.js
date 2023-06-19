@@ -1,4 +1,4 @@
-const addUser = async (item) => {
+const addItem = async (item) => {
   const response = await fetch('http://localhost:3003/users', {
     method: 'POST',
     headers: {
@@ -17,7 +17,7 @@ const addUser = async (item) => {
   return data;
 };
 
-const removeUser = async (item) => {
+const removeItem = async (item) => {
   const response = await fetch('http://localhost:3003/users', {
     method: 'DELETE',
     headers: {
@@ -34,7 +34,7 @@ const removeUser = async (item) => {
   return data;
 }
 
-const getUsers = async () => {
+const getItems = async () => {
   const response = await fetch('http://localhost:3003/users', {
     method: 'GET'
   });
@@ -42,7 +42,7 @@ const getUsers = async () => {
 };
 
 export default {
-  addUser,
-  getUsers,
-  removeUser
+  addItem,
+  getItems,
+  removeItem
 };

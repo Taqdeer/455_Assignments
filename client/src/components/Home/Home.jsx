@@ -8,7 +8,7 @@ import { deleteItem } from '../../actions/index.js'
 import DetailedView from './DetailedView';
 
 import styled from 'styled-components';
-import { getUsersAsync, removeUserAsync } from '../../users/thunks';
+import { getItemsAsync, removeItemAsync } from '../../users/thunks';
 
 const Overlay = styled.div`
   position: fixed;
@@ -54,11 +54,11 @@ const Home = () => {
   // console.log(items)
 
   const handleDelete = (item) => {
-    dispatch(removeUserAsync(item.id));
+    dispatch(removeItemAsync(item.id));
   };
 
   useEffect(() => {
-    dispatch(getUsersAsync());
+    dispatch(getItemsAsync());
   }, []);
 
     return (

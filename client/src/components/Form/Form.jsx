@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {useDispatch} from 'react-redux';
-import { addUserAsync } from '../../users/thunks';
+import { addItemAsync } from '../../users/thunks';
 
 const Form = () => {
 
@@ -22,7 +22,7 @@ const Form = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(addUserAsync(formData));
+        dispatch(addItemAsync(formData));
     }
 
     const clearForm = () => {
