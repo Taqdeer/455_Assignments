@@ -2,12 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { v4: uuid } = require('uuid');
 
-const users = [
-  { id: uuid(), name: 'Stephanie' },
-  { id: uuid(), name: 'Ian' },
-  { id: uuid(), name: 'Danya' }
-];
-
 const defaultItems = [
 	{
 		id: uuid(),
