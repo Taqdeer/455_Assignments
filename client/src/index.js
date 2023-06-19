@@ -5,11 +5,11 @@ import App from './App';
 
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import usersReducer from './users/reducer'
+import itemsReducer from './items/reducer'
 
 export const store = configureStore({
   reducer: {
-    users: usersReducer
+    items: itemsReducer
   },
   devTools: true
 });

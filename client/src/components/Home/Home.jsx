@@ -7,7 +7,7 @@ import {useDispatch} from 'react-redux';
 import DetailedView from './DetailedView';
 
 import styled from 'styled-components';
-import { getItemsAsync, removeItemAsync, filterItemsAsync } from '../../users/thunks';
+import { getItemsAsync, removeItemAsync, filterItemsAsync } from '../../items/thunks';
 
 const Overlay = styled.div`
   position: fixed;
@@ -45,7 +45,7 @@ const Home = () => {
     setPopupStates(updatedPopupStates);
   };
 
-  const items = useSelector(state => state.users.list);
+  const items = useSelector(state => state.items.list);
   const dispatch = useDispatch();
 
   const handleDelete = (item) => {
