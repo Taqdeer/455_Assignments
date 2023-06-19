@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Nav from "../Nav/Nav";
 import Form from "../Form/Form";
 import { useSelector } from 'react-redux';
@@ -8,6 +8,7 @@ import { deleteItem } from '../../actions/index.js'
 import DetailedView from './DetailedView';
 
 import styled from 'styled-components';
+import { getUsersAsync, removeUserAsync } from '../../users/thunks';
 
 const Overlay = styled.div`
   position: fixed;
@@ -30,8 +31,8 @@ const Popup = styled.div`
 `;
 
 const Home = () => {
-  const items = useSelector(state => state.imageItems);
-  console.log(items);
+  // const items = useSelector(state => state.imageItems);
+  // console.log(items);
 
   const [popupStates, setPopupStates] = useState([]);
 
@@ -47,11 +48,18 @@ const Home = () => {
     setPopupStates(updatedPopupStates);
   };
 
+  const items = useSelector(state => state.users.list);
   const dispatch = useDispatch();
+  // console.log("causing problem")
+  // console.log(items)
 
   const handleDelete = (item) => {
-    dispatch(deleteItem(item));
+    dispatch(removeUserAsync(item.id));
   };
+
+  useEffect(() => {
+    dispatch(getUsersAsync());
+  }, []);
 
     return (
         <div>
@@ -63,7 +71,7 @@ const Home = () => {
               <div id="numberOfCards">Number of cards at display: <span id="cardsCount">{items.length}</span></div>
               <div id="cardContainer">
                 {items.map((item, index) => (
-                  <div key={item.itemPrice}>
+                  <div key={item.id}>
                     <h3>{item.itemName}</h3>
                     <img src={item.itemURL} 
                       alt={item.itemDescription} 
