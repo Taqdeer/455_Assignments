@@ -20,7 +20,7 @@ const defaultItems = [
 ]
 
 router.get('/', function (req, res, next) {
-  return res.send(defaultItems);
+  return res.status(200).send(defaultItems);
 });
 
 router.get('/items', function (req, res, next) {
@@ -28,7 +28,7 @@ router.get('/items', function (req, res, next) {
 	if (filterName === '')
 		return res.send(defaultItems)
 	let filterArray = defaultItems.filter(item => item.itemName === filterName);
-	return res.send(filterArray);
+	return res.status(200).send(filterArray);
   });
 
 router.post('/', function (req, res, next) {
@@ -43,7 +43,7 @@ router.post('/', function (req, res, next) {
 		itemURL: req.body.item.itemURL,
 	};
 	defaultItems.push(item);
-	return res.send(item);
+	return res.status(200).send(item);
   });
 
 router.delete('/', function (req, res, next){
@@ -51,7 +51,7 @@ router.delete('/', function (req, res, next){
 	if (index !== -1) {
 		defaultItems.splice(index, 1);
 	}
-	return res.send(defaultItems);
+	return res.status(200).send(defaultItems);
 })
 
 module.exports = router;
