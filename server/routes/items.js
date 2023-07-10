@@ -48,12 +48,11 @@ router.get('/', function (req, res, next) {
 
 router.get('/items', function (req, res, next) {
 	const filterName = req.query.filter;
-	collection.find().toArray()
-		.then((items) => {
-			if (filterName === '')
-				return res.send(items)
-			let filterArray = items.filter(item => item.itemName === filterName);
-			res.status(200).send(filterArray);
+	const query = filterName ? { itemName: filterName } : {};
+
+	collection.find(query).toArray()
+	.then((items) => {
+		res.status(200).send(items);
 	})
 	.catch((err) => {
 		console.log('Error retrieving collection items:', err);
