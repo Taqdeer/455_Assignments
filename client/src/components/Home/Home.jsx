@@ -50,6 +50,7 @@ const Home = () => {
 
   const handleDelete = (item) => {
     dispatch(removeItemAsync(item.id));
+    dispatch(getItemsAsync());
   };
 
   useEffect(() => {

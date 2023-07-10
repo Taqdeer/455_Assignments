@@ -37,22 +37,28 @@ connectToMongoDB()
 router.get('/', function (req, res, next) {
 	collection.find().toArray()
 		.then((items) => {
-		console.log(items);
 		res.status(200).send(items);
 	})
 	.catch((err) => {
 		console.log('Error retrieving collection items:', err);
-		reject(err);
+		return next(err);
 	});
 });
 
 
 router.get('/items', function (req, res, next) {
 	const filterName = req.query.filter;
-	if (filterName === '')
-		return res.send(defaultItems)
-	let filterArray = defaultItems.filter(item => item.itemName === filterName);
-	return res.status(200).send(filterArray);
+	collection.find().toArray()
+		.then((items) => {
+			if (filterName === '')
+				return res.send(items)
+			let filterArray = items.filter(item => item.itemName === filterName);
+			res.status(200).send(filterArray);
+	})
+	.catch((err) => {
+		console.log('Error retrieving collection items:', err);
+		return next(err);
+	});
   });
 
 router.post('/', function (req, res, next) {
@@ -66,16 +72,24 @@ router.post('/', function (req, res, next) {
 		itemPrice: req.body.item.itemPrice,
 		itemURL: req.body.item.itemURL,
 	};
-	defaultItems.push(item);
-	return res.status(200).send(item);
-  });
+	collection.insertOne(item)
+        .then(() => {
+          return res.status(200).send(item);
+        })
+        .catch((err) => {
+          return next(err);
+    });
+});
 
 router.delete('/', function (req, res, next){
-	const index = defaultItems.findIndex(item => item.id === req.body.item);
-	if (index !== -1) {
-		defaultItems.splice(index, 1);
-	}
-	return res.status(200).send(defaultItems);
+	const query = { id: req.body.item };
+	collection.deleteOne(query)
+	.then(() => {
+		return res.status(200).send({ message: 'Item deleted successfully' });
+	})
+	.catch((err) => {
+		return next(err);
+	});
 })
 
 module.exports = router;

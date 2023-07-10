@@ -29,7 +29,10 @@ const removeItem = async (item) => {
     const errorMsg = data?.message;
     throw new Error(errorMsg)
   }
-  return data;
+  const items = await fetch('http://localhost:3003/items', {
+    method: 'GET'
+  });
+  return items.json();
 }
 
 const getItems = async () => {
