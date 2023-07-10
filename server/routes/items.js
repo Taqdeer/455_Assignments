@@ -1,27 +1,51 @@
 const express = require('express');
 const router = express.Router();
 const { v4: uuid } = require('uuid');
+const { MongoClient } = require('mongodb');
 
-const defaultItems = [
-	{
-		id: uuid(),
-		itemName: "sunset", 
-		itemDescription: "sunset",
-		itemPrice: 1234,
-		itemURL: "https://www.momondo.ca/discover/wp-content/uploads/sites/254/2016/08/256803d1-aba2-3adc-970b-1fa9e326b190.jpg"
-	},
-	{
-		id: uuid(),
-		itemName: "sunrise", 
-		itemDescription: "sunrise",
-		itemPrice: 4567,
-		itemURL: "https://i.ytimg.com/vi/2avT63Pjljg/maxresdefault.jpg"
-	},
-]
+const url = 'mongodb://localhost:27017';
+const dbName = 'database_455';
+
+var collection;
+
+function connectToMongoDB() {
+  return new Promise((resolve, reject) => {
+    MongoClient.connect(url)
+      .then((client) => {
+        console.log('Connected to MongoDB');
+        const db = client.db(dbName);
+        collection = db.collection('database_455');
+        
+        collection.find().toArray()
+          .then((items) => {
+            console.log(items);
+            resolve(db);
+          })
+          .catch((err) => {
+            console.log('Error retrieving collection items:', err);
+            reject(err);
+          });
+      })
+      .catch((err) => {
+        console.log('Failed to connect to MongoDB:', err);
+        reject(err);
+      });
+  });
+}
+connectToMongoDB()
 
 router.get('/', function (req, res, next) {
-  return res.status(200).send(defaultItems);
+	collection.find().toArray()
+		.then((items) => {
+		console.log(items);
+		res.status(200).send(items);
+	})
+	.catch((err) => {
+		console.log('Error retrieving collection items:', err);
+		reject(err);
+	});
 });
+
 
 router.get('/items', function (req, res, next) {
 	const filterName = req.query.filter;
