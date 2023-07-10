@@ -29,3 +29,10 @@ export const filterItemsAsync = createAsyncThunk(
     return await ItemService.filterItems({ item });
   }
 )
+
+export const updateUserDetailsAsync = createAsyncThunk(
+  actionTypes.UPDATE_ITEM,
+  async (item, user_name) => {
+    return await ItemService.updateItem({ item, user_name });
+  }
+)

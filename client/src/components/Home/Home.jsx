@@ -7,7 +7,7 @@ import {useDispatch} from 'react-redux';
 import DetailedView from './DetailedView';
 
 import styled from 'styled-components';
-import { getItemsAsync, removeItemAsync, filterItemsAsync } from '../../items/thunks';
+import { getItemsAsync, removeItemAsync, filterItemsAsync, updateUserDetailsAsync } from '../../items/thunks';
 
 const Overlay = styled.div`
   position: fixed;
@@ -50,7 +50,6 @@ const Home = () => {
 
   const handleDelete = (item) => {
     dispatch(removeItemAsync(item.id));
-    dispatch(getItemsAsync());
   };
 
   useEffect(() => {
@@ -66,6 +65,10 @@ const Home = () => {
   const handleFilterButtonClick = () => {
     dispatch(filterItemsAsync(filterItem));
   };
+
+  const updateUserDetails = (item, user_name) => {
+    dispatch(updateUserDetailsAsync({ item, user_name }));
+  }
 
     return (
         <div>
@@ -101,6 +104,15 @@ const Home = () => {
                     <br />
                     <br />
                     <button onClick={() => handleDelete(item)}>Delete</button>
+                    <br />
+                    <br />
+                    <button onClick={() => updateUserDetails(item, 'Taqdeer')}>Added by Taqdeer</button>
+                    <br />
+                    <br />
+                    <button onClick={() => updateUserDetails(item, 'Mona')}>Added by Mona</button>
+                    <br />
+                    <br />
+                    <button onClick={() => updateUserDetails(item, 'Arun')}>Added by Arun</button>
                   </div>
                 ))}
               </div>
