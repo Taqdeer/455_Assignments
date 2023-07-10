@@ -4,4 +4,5 @@ export const actionTypes = {
   REMOVE_ITEM: 'items/removeItem',
   FILTER_ITEMS: 'items/filterItems',
   UPDATE_ITEM: 'items/updateItem',
+  GET_DETAILED_ITEM: 'items/getDetailedItem',
 };

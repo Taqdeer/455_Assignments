@@ -78,10 +78,26 @@ const updateItem = async(item) => {
   return items.json();
 }
 
+const getDetailedItem = async(item) => {
+  const endpoint = '/details';
+  const queryParams = new URLSearchParams({ user_id: item.item.user_id});
+  const url = `http://localhost:3003/items${endpoint}?${queryParams}`;
+  const response = await fetch(url, {
+    method: 'GET',
+  });
+  const data = await response.json();
+  if (!response.ok) {
+    const errorMsg = data?.message;
+    throw new Error(errorMsg)
+  }
+  return data;
+}
+
 export default {
   addItem,
   getItems,
   removeItem,
   filterItems,
   updateItem,
+  getDetailedItem,
 };

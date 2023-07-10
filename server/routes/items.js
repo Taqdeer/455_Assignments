@@ -71,6 +71,19 @@ router.get('/items', function (req, res, next) {
 	});
   });
 
+router.get('/details', async function (req, res, next) {
+	const user_id = req.query.user_id;
+	try{
+		const userFilter = { id: user_id };
+	  	const user = await users_collection.findOne(userFilter);
+
+		res.status(200).send(user);
+	}catch(err){
+		console.error('Error finding user:', err);
+	  	return next(err);
+	}
+});
+
 router.post('/', function (req, res, next) {
 	if (!req.body.item.itemName) {
 		return res.status(400).send({ message: 'Item name must be there!' })
@@ -106,7 +119,7 @@ router.put('/update', async function (req, res, next) {
 	  const user = await users_collection.findOne(userFilter);
   
 	  if (item && user) {
-		item.user_id = user._id;
+		item.user_id = user.id;
   
 		await items_collection.updateOne(itemFilter, { $set: item });
   

@@ -7,7 +7,7 @@ import {useDispatch} from 'react-redux';
 import DetailedView from './DetailedView';
 
 import styled from 'styled-components';
-import { getItemsAsync, removeItemAsync, filterItemsAsync, updateUserDetailsAsync } from '../../items/thunks';
+import { getItemsAsync, removeItemAsync, filterItemsAsync, updateUserDetailsAsync, getDetailedItemsAsync } from '../../items/thunks';
 
 const Overlay = styled.div`
   position: fixed;
@@ -33,10 +33,11 @@ const Home = () => {
 
   const [popupStates, setPopupStates] = useState([]);
 
-  const handleImageClick = (index) => {
+  const handleImageClick = (index, item) => {
     const updatedPopupStates = [...popupStates];
     updatedPopupStates[index] = true;
     setPopupStates(updatedPopupStates);
+    dispatch(getDetailedItemsAsync(item));
   };
 
   const handleClosePopup = (index) => {
@@ -46,6 +47,7 @@ const Home = () => {
   };
 
   const items = useSelector(state => state.items.list);
+  const user = useSelector(state => state.items.user);
   const dispatch = useDispatch();
 
   const handleDelete = (item) => {
@@ -91,12 +93,12 @@ const Home = () => {
                       alt={item.itemDescription} 
                       height={250} 
                       width={250}
-                      onClick={() => handleImageClick(index)}
+                      onClick={() => handleImageClick(index, item)}
                       />
                     {popupStates[index] && (
                       <Overlay>
                         <Popup>
-                          <DetailedView item={item} />
+                          <DetailedView item={item} user={user} />
                           <button onClick={() => handleClosePopup(index)}>Close</button>
                         </Popup>
                       </Overlay>
