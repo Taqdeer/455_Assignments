@@ -77,6 +77,7 @@ const Home = () => {
           <Nav />
           <main className='overlay'>
             <h1>Hola!</h1>
+            <h1>Welcome!</h1>
             <Form />
             <div>
                 <input type="text" value={filterItem} onChange={handleFilterChange} />
