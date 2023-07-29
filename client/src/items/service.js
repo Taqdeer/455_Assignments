@@ -1,5 +1,5 @@
 const addItem = async (item) => {
-  const response = await fetch('http://localhost:3003/items', {
+  const response = await fetch('https://assignment5-2tpu.onrender.com/items', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -16,7 +16,7 @@ const addItem = async (item) => {
 };
 
 const removeItem = async (item) => {
-  const response = await fetch('http://localhost:3003/items', {
+  const response = await fetch('https://assignment5-2tpu.onrender.com/items', {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -29,7 +29,7 @@ const removeItem = async (item) => {
     const errorMsg = data?.message;
     throw new Error(errorMsg)
   }
-  const items = await fetch('http://localhost:3003/items', {
+  const items = await fetch('https://assignment5-2tpu.onrender.com/items', {
     method: 'GET'
   });
   return items.json();
