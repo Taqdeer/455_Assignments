@@ -5,8 +5,7 @@ describe('GET /', () => {
   it('should return all items from the database', async () => {
     const response = await request(app).get('/');
     expect(response.status).toBe(200);
-    expect(response.body).toHaveLength(2); // Modify the expected length as per your test data
-    // You can also check for specific properties of the items in the response if needed
+    expect(response.body).toHaveLength(2);
   });
 });
 
@@ -24,7 +23,6 @@ describe('POST /', () => {
     const response = await request(app).post('/').send(newItem);
     expect(response.status).toBe(200);
     expect(response.body.itemName).toBe('New Item');
-    // You can add more assertions to check if the new item is correctly saved to the database
   });
 
   it('should return 400 if item name is missing', async () => {
@@ -38,6 +36,5 @@ describe('POST /', () => {
 
     const response = await request(app).post('/').send(newItem);
     expect(response.status).toBe(400);
-    // You can add more assertions to check the error message or other conditions if needed
   });
 });
