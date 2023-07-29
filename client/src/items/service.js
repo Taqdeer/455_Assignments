@@ -36,7 +36,7 @@ const removeItem = async (item) => {
 }
 
 const getItems = async () => {
-  const response = await fetch('http://localhost:3003/items', {
+  const response = await fetch('https://assignment5-2tpu.onrender.com/items', {
     method: 'GET'
   });
   return response.json();
@@ -45,7 +45,7 @@ const getItems = async () => {
 const filterItems = async (item) => {
   const endpoint = '/items';
   const queryParams = new URLSearchParams({ filter: item.item });
-  const url = `http://localhost:3003/items${endpoint}?${queryParams}`;
+  const url = `https://assignment5-2tpu.onrender.com/items${endpoint}?${queryParams}`;
   const response = await fetch(url, {
     method: 'GET',
   });
@@ -60,7 +60,7 @@ const filterItems = async (item) => {
 const updateItem = async(item) => {
   const endpoint = '/update';
   const queryParams = new URLSearchParams({ item_id: item.item.item.id,  user_name: item.item.user_name});
-  const url = `http://localhost:3003/items${endpoint}?${queryParams}`;
+  const url = `https://assignment5-2tpu.onrender.com/items${endpoint}?${queryParams}`;
   const response = await fetch(url, {
     method: 'PUT',
     headers: {
@@ -72,7 +72,7 @@ const updateItem = async(item) => {
     const errorMsg = data?.message;
     throw new Error(errorMsg)
   }
-  const items = await fetch('http://localhost:3003/items', {
+  const items = await fetch('https://assignment5-2tpu.onrender.com/items', {
     method: 'GET'
   });
   return items.json();
@@ -81,7 +81,7 @@ const updateItem = async(item) => {
 const getDetailedItem = async(item) => {
   const endpoint = '/details';
   const queryParams = new URLSearchParams({ user_id: item.item.user_id});
-  const url = `http://localhost:3003/items${endpoint}?${queryParams}`;
+  const url = `https://assignment5-2tpu.onrender.com/items${endpoint}?${queryParams}`;
   const response = await fetch(url, {
     method: 'GET',
   });
