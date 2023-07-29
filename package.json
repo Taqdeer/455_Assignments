@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Taqdeer/455_Assignments/issues"
   },
-  "homepage": "https://github.com/Taqdeer/455_Assignments#readme"
+  "homepage": "https://github.com/Taqdeer/455_Assignments#readme",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
 }
