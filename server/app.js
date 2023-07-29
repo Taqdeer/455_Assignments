@@ -7,9 +7,14 @@ const cors = require('cors');
 var indexRouter = require('./routes/index');
 var itemsRouter = require('./routes/items');
 
+// middleware
+const corsOptions = {
+    origin: "https://assignment5-frontend-61md.onrender.com", // frontend URI (ReactJS)
+}
+
 var app = express();
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
