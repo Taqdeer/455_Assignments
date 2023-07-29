@@ -3,7 +3,7 @@ const router = express.Router();
 const { v4: uuid } = require('uuid');
 const { MongoClient } = require('mongodb');
 
-const url = 'mongodb://localhost:27017';
+const url = process.env.MONGODB_URI;
 const dbName = 'database_455';
 
 var items_collection;
