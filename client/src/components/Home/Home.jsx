@@ -116,6 +116,7 @@ const Home = () => {
                     <br />
                     <br />
                     <button onClick={() => updateUserDetails(item, 'Arun')}>Added by Arun</button>
+                    <button onClick={() => updateUserDetails(item, 'Aruna')}>Added by Arun</button>
                   </div>
                 ))}
               </div>
